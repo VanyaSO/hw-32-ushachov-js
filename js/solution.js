@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 
 // Файлы в которых выполнять ДЗ прикреплены ниже.
 // У нас есть дерево, структурированное как вложенные списки ul/li.
@@ -11,30 +11,32 @@
 // 5 Удалить у тега ul атрибут ‘data-dog-tail‘
 // Вернуться к уроку
 
+(function () {
+    let UL = document.getElementById('ulId');
 
-let UL = document.getElementById('ulId');
+    let name = 'Dog';
 
-let name = 'Dog';
+    const attr = UL.attributes;
+    const arrAttValue = [];
+    const arrAttName = [];
 
-const attr = UL.attributes;
-const arrAttValue = [];
-const arrAttName = [];
+    //1,2
+    for (let i = 0, length = attr.length; i < length; i++) {
+        arrAttValue.push(attr[i].value);
+        arrAttName.push(attr[i].name);
+    }
 
-//1,2
-for (let i = 0, length = attr.length; i < length; i++) {
-    arrAttValue.push(attr[i].value);
-    arrAttName.push(attr[i].name);
-}
+    console.log(`Значение каждого атрибута тега UL`);
+    console.log(arrAttValue);
 
-console.log(`Значение каждого атрибута тега UL`);
-console.log(arrAttValue);
+    console.log(`Имя каждого атрибута тега UL`);
+    console.log(arrAttName);
 
-console.log(`Имя каждого атрибута тега UL`);
-console.log(arrAttName);
+    //3
+    UL.lastElementChild.innerHTML =  `Привет, меня зовут ${name}`;
+    //4
+    UL.firstElementChild.setAttribute('data-my-name', name);
+    //5
+    UL.removeAttribute('data-dog-tail');
 
-//3
-UL.lastElementChild.innerHTML =  `Привет, меня зовут ${name} `;
-//4
-UL.firstElementChild.setAttribute('data-my-name', name);
-//5
-UL.removeAttribute('data-dog-tail');
+})();
